@@ -1,70 +1,9 @@
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
-
-interface PageData {
-  title: string
-  description: string
-  language: string
-  hero: {
-    title: string
-    subtitle: string
-    ctaText: string
-    stats: Array<{
-      number: string
-      label: string
-    }>
-  }
-  problem: {
-    title: string
-    subtitle: string
-    items: Array<{
-      title: string
-      description: string
-    }>
-  }
-  solution: {
-    title: string
-    subtitle: string
-    items: Array<{
-      icon: string
-      title: string
-      description: string
-    }>
-  }
-  pricing: {
-    title: string
-    subtitle: string
-    plans: Array<{
-      name: string
-      price: string
-      period: string
-      featured?: boolean
-      badge?: string
-      features: string[]
-      ctaText: string
-    }>
-  }
-  socialProof: {
-    title: string
-    subtitle: string
-    stats: Array<{
-      number: string
-      label: string
-    }>
-  }
-  finalCta: {
-    title: string
-    subtitle: string
-    ctaText: string
-  }
-  footer: {
-    tagline: string
-    contactText: string
-  }
-}
+import type { PageQuery } from '../tina/__generated__/types'
 
 interface LandingPageProps {
-  data: PageData
+  data: PageQuery['page']
 }
 
 export default function LandingPage({ data }: LandingPageProps) {
@@ -134,7 +73,7 @@ export default function LandingPage({ data }: LandingPageProps) {
                 </select>
               </div>
               <a href="https://tenten.co/contact" className="btn btn-primary">
-                {data.footer.contactText}
+                {data.footer?.contactText || 'CONTACT US'}
               </a>
             </div>
           </div>
@@ -158,22 +97,22 @@ export default function LandingPage({ data }: LandingPageProps) {
         <div className="container">
           <div className="hero-content">
             <div className="hero-text">
-              <h1 className="hero-title">{data.hero.title}</h1>
-              <p className="hero-subtitle">{data.hero.subtitle}</p>
+              <h1 className="hero-title">{data.hero?.title || 'DOMINATE AI SEARCH RESULTS'}</h1>
+              <p className="hero-subtitle">{data.hero?.subtitle || 'Future-proof your business with expert GEO services.'}</p>
               <div className="hero-stats">
-                {data.hero.stats.map((stat, index) => (
+                {data.hero?.stats?.filter(Boolean).map((stat, index) => (
                   <div key={index} className="stat">
                     <div className="stat-number">{stat.number}</div>
                     <div className="stat-label">{stat.label}</div>
                   </div>
-                ))}
+                )) || []}
               </div>
               <a 
                 href="#pricing" 
                 className="btn btn-primary btn-large"
                 onClick={(e) => smoothScroll(e, '#pricing')}
               >
-                {data.hero.ctaText}
+                {data.hero?.ctaText || 'START DOMINATING AI SEARCH'}
               </a>
             </div>
           </div>
@@ -184,16 +123,16 @@ export default function LandingPage({ data }: LandingPageProps) {
       <section className="problem">
         <div className="container">
           <div className="section-header">
-            <h2>{data.problem.title}</h2>
-            <p>{data.problem.subtitle}</p>
+            <h2>{data.problem?.title || 'THE AI SEARCH REVOLUTION IS HERE'}</h2>
+            <p>{data.problem?.subtitle || 'Traditional SEO isn\'t enough anymore.'}</p>
           </div>
           <div className="problem-grid">
-            {data.problem.items.map((item, index) => (
+            {data.problem?.items?.filter(Boolean).map((item, index) => (
               <div key={index} className="problem-item">
                 <h3>{item.title}</h3>
                 <p>{item.description}</p>
               </div>
-            ))}
+            )) || []}
           </div>
         </div>
       </section>
@@ -202,17 +141,17 @@ export default function LandingPage({ data }: LandingPageProps) {
       <section className="solution">
         <div className="container">
           <div className="section-header">
-            <h2>{data.solution.title}</h2>
-            <p>{data.solution.subtitle}</p>
+            <h2>{data.solution?.title || 'TENTEN\'S GEO ADVANTAGE'}</h2>
+            <p>{data.solution?.subtitle || 'We\'re the specialists in Generative Engine Optimization.'}</p>
           </div>
           <div className="solution-grid">
-            {data.solution.items.map((item, index) => (
+            {data.solution?.items?.filter(Boolean).map((item, index) => (
               <div key={index} className="solution-item">
                 <div className="solution-icon">{item.icon}</div>
                 <h3>{item.title}</h3>
                 <p>{item.description}</p>
               </div>
-            ))}
+            )) || []}
           </div>
         </div>
       </section>
@@ -221,11 +160,11 @@ export default function LandingPage({ data }: LandingPageProps) {
       <section className="pricing" id="pricing">
         <div className="container">
           <div className="section-header">
-            <h2>{data.pricing.title}</h2>
-            <p>{data.pricing.subtitle}</p>
+            <h2>{data.pricing?.title || 'CHOOSE YOUR GEO PACKAGE'}</h2>
+            <p>{data.pricing?.subtitle || 'Invest in your AI search future with our proven GEO strategies'}</p>
           </div>
           <div className="pricing-grid">
-            {data.pricing.plans.map((plan, index) => (
+            {data.pricing?.plans?.filter(Boolean).map((plan, index) => (
               <div key={index} className={`pricing-card ${plan.featured ? 'pricing-featured' : ''}`}>
                 {plan.badge && <div className="pricing-badge">{plan.badge}</div>}
                 <div className="pricing-header">
@@ -244,7 +183,7 @@ export default function LandingPage({ data }: LandingPageProps) {
                   {plan.ctaText}
                 </a>
               </div>
-            ))}
+            )) || []}
           </div>
         </div>
       </section>
@@ -253,16 +192,16 @@ export default function LandingPage({ data }: LandingPageProps) {
       <section className="social-proof">
         <div className="container">
           <div className="section-header">
-            <h2>{data.socialProof.title}</h2>
-            <p>{data.socialProof.subtitle}</p>
+            <h2>{data.socialProof?.title || 'TRUSTED BY FORWARD-THINKING BRANDS'}</h2>
+            <p>{data.socialProof?.subtitle || 'Join companies that are already winning in the AI search era'}</p>
           </div>
           <div className="social-proof-stats">
-            {data.socialProof.stats.map((stat, index) => (
+            {data.socialProof?.stats?.filter(Boolean).map((stat, index) => (
               <div key={index} className="social-stat">
                 <div className="social-number">{stat.number}</div>
                 <div className="social-label">{stat.label}</div>
               </div>
-            ))}
+            )) || []}
           </div>
         </div>
       </section>
@@ -271,10 +210,10 @@ export default function LandingPage({ data }: LandingPageProps) {
       <section className="final-cta">
         <div className="container">
           <div className="cta-content">
-            <h2>{data.finalCta.title}</h2>
-            <p>{data.finalCta.subtitle}</p>
+            <h2>{data.finalCta?.title || 'DON\'T GET LEFT BEHIND IN THE AI SEARCH REVOLUTION'}</h2>
+            <p>{data.finalCta?.subtitle || 'Your competitors are already optimizing for AI search.'}</p>
             <a href="https://tenten.co/contact" className="btn btn-primary btn-large">
-              {data.finalCta.ctaText}
+              {data.finalCta?.ctaText || 'START YOUR GEO STRATEGY TODAY'}
             </a>
           </div>
         </div>
@@ -286,11 +225,11 @@ export default function LandingPage({ data }: LandingPageProps) {
           <div className="footer-content">
             <div className="footer-left">
               <div className="logo">TENTEN</div>
-              <p>{data.footer.tagline}</p>
+              <p>{data.footer?.tagline || 'Leading the future of AI search optimization'}</p>
             </div>
             <div className="footer-right">
               <a href="https://tenten.co/contact" className="btn btn-secondary">
-                {data.footer.contactText}
+                {data.footer?.contactText || 'CONTACT US'}
               </a>
             </div>
           </div>
