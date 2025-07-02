@@ -14,10 +14,5 @@
       "destination": "/admin/index.html",
       "permanent": false
     }
-  ],
-  "env": {
-    "NEXT_PUBLIC_TINA_CLIENT_ID": "@tina_client_id",
-    "TINA_TOKEN": "@tina_token",
-    "NEXT_PUBLIC_TINA_BRANCH": "main"
-  }
+  ]
 }
