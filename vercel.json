@@ -1,0 +1,23 @@
+{
+  "framework": "nextjs",
+  "buildCommand": "npm run build",
+  "devCommand": "npm run dev",
+  "installCommand": "npm install",
+  "functions": {
+    "pages/api/**/*.ts": {
+      "runtime": "nodejs18.x"
+    }
+  },
+  "redirects": [
+    {
+      "source": "/admin",
+      "destination": "/admin/index.html",
+      "permanent": false
+    }
+  ],
+  "env": {
+    "NEXT_PUBLIC_TINA_CLIENT_ID": "@tina_client_id",
+    "TINA_TOKEN": "@tina_token",
+    "NEXT_PUBLIC_TINA_BRANCH": "main"
+  }
+}

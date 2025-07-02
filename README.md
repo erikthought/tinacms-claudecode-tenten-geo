@@ -1,0 +1,212 @@
+# Tenten GEO Landing Page - TinaCMS + Vercel
+
+A multilingual landing page for Tenten's Generative Engine Optimization (GEO) services, powered by TinaCMS and deployed on Vercel.
+
+## Features
+
+- 🌍 **Multilingual Support**: English, Japanese, Simplified Chinese, Traditional Chinese, Korean, Arabic
+- 📝 **TinaCMS Integration**: Visual editing with live preview
+- 🎬 **Video Background**: Vimeo integration with responsive design
+- 📱 **Responsive Design**: Mobile-first approach
+- ⚡ **Next.js Performance**: Static site generation with dynamic content
+- 🚀 **Vercel Deployment**: Seamless CI/CD integration
+
+## Tech Stack
+
+- **Framework**: Next.js 14
+- **CMS**: TinaCMS
+- **Styling**: CSS (Daily.co inspired design)
+- **Hosting**: Vercel
+- **Video**: Vimeo Player API
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js 18+ 
+- npm or yarn
+- TinaCMS account ([tina.io](https://tina.io))
+
+### Installation
+
+1. **Clone the repository**
+   ```bash
+   git clone <your-repo-url>
+   cd Tenten-GEO-0701-ClaudeCode
+   ```
+
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
+
+3. **Environment Setup**
+   ```bash
+   cp .env.example .env.local
+   ```
+   
+   Add your TinaCMS credentials:
+   ```
+   NEXT_PUBLIC_TINA_CLIENT_ID=your_client_id
+   TINA_TOKEN=your_token
+   NEXT_PUBLIC_TINA_BRANCH=main
+   ```
+
+4. **Initialize TinaCMS**
+   ```bash
+   npx tinacms init
+   ```
+
+5. **Run development server**
+   ```bash
+   npm run dev
+   ```
+
+## Deployment to Vercel
+
+### Automatic Deployment
+
+1. **Connect to Vercel**
+   - Push your code to GitHub/GitLab/Bitbucket
+   - Import project to Vercel
+   - Vercel will auto-detect Next.js configuration
+
+2. **Environment Variables**
+   In Vercel dashboard, add:
+   - `NEXT_PUBLIC_TINA_CLIENT_ID`
+   - `TINA_TOKEN`
+   - `NEXT_PUBLIC_TINA_BRANCH=main`
+
+3. **Deploy**
+   ```bash
+   npm run build
+   ```
+
+### Manual Deployment
+
+1. **Install Vercel CLI**
+   ```bash
+   npm i -g vercel
+   ```
+
+2. **Deploy**
+   ```bash
+   vercel --prod
+   ```
+
+## TinaCMS Setup
+
+### Getting TinaCMS Credentials
+
+1. Visit [tina.io](https://tina.io) and create an account
+2. Create a new project
+3. Copy your Client ID and Token
+4. Add them to your environment variables
+
+### Content Management
+
+- **Admin Interface**: `yoursite.com/admin`
+- **Live Editing**: Edit content directly on pages
+- **Content Structure**: All content stored in `/content/pages/`
+
+## Project Structure
+
+```
+├── components/          # React components
+│   ├── Layout.tsx      # Page layout wrapper
+│   └── LandingPage.tsx # Main landing page component
+├── content/pages/      # TinaCMS content files
+│   ├── en.md          # English content
+│   ├── ja.md          # Japanese content
+│   ├── zh-cn.md       # Simplified Chinese
+│   ├── zh-tw.md       # Traditional Chinese
+│   ├── ko.md          # Korean content
+│   └── ar.md          # Arabic content
+├── pages/              # Next.js pages
+│   ├── _app.tsx       # App wrapper
+│   ├── _document.tsx  # Document structure
+│   ├── index.tsx      # Home page (English)
+│   └── [...filename].tsx # Dynamic language routes
+├── styles/            # CSS files
+│   └── globals.css    # Global styles
+├── tina/              # TinaCMS configuration
+│   └── config.ts      # Schema and collections
+└── public/            # Static assets
+```
+
+## Language Support
+
+### Supported Languages
+
+- **English**: `/` (index)
+- **Japanese**: `/ja`
+- **Simplified Chinese**: `/zh-cn`
+- **Traditional Chinese**: `/zh-tw`
+- **Korean**: `/ko`
+- **Arabic**: `/ar` (RTL support)
+
+### Adding New Languages
+
+1. Create content file in `/content/pages/[language].md`
+2. Update language selector in components
+3. Add route mapping in `[...filename].tsx`
+4. Update TinaCMS schema if needed
+
+## Content Editing
+
+### Via TinaCMS Admin
+
+1. Go to `/admin` on your deployed site
+2. Login with TinaCMS credentials
+3. Edit content using visual editor
+4. Changes auto-save and deploy
+
+### Direct File Editing
+
+Edit markdown files in `/content/pages/` directly for bulk changes.
+
+## Customization
+
+### Styling
+
+- Main styles: `/styles/globals.css`
+- Component-specific styles: Inline or styled-components
+- Responsive breakpoints: 768px, 1024px
+
+### Content Schema
+
+Modify `/tina/config.ts` to:
+- Add new content fields
+- Change validation rules
+- Update content structure
+
+### Video Background
+
+Update Vimeo video ID in component:
+```tsx
+<iframe src="https://player.vimeo.com/video/YOUR_VIDEO_ID?autoplay=1&loop=1&muted=1&controls=0&background=1" />
+```
+
+## Performance
+
+- **Static Generation**: All pages pre-rendered
+- **Image Optimization**: Next.js automatic optimization
+- **Font Loading**: Preconnect to Google Fonts
+- **Code Splitting**: Automatic by Next.js
+
+## SEO
+
+- **Meta Tags**: Dynamic per language
+- **Structured Data**: JSON-LD markup
+- **Sitemap**: Auto-generated by Next.js
+- **Language Tags**: Proper hreflang implementation
+
+## Support
+
+- **TinaCMS Docs**: [tina.io/docs](https://tina.io/docs)
+- **Vercel Docs**: [vercel.com/docs](https://vercel.com/docs)
+- **Next.js Docs**: [nextjs.org/docs](https://nextjs.org/docs)
+
+## License
+
+MIT License - see LICENSE file for details.
