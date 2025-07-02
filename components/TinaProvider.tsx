@@ -18,7 +18,6 @@ export default function TinaProvider({ children }: TinaProviderProps) {
   useEffect(() => {
     // Check for edit mode in URL with multiple detection methods
     const editParam = router.query.edit === 'true' || 
-                     router.query.edit === true ||
                      (typeof window !== 'undefined' && window.location.search.includes('edit=true'))
     
     console.log('Edit mode check:', {
