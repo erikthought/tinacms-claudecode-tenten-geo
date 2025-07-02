@@ -12,7 +12,8 @@
     "next": "^14.0.0",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
-    "styled-components": "^6.0.0"
+    "styled-components": "^6.0.0",
+    "tinacms": "^1.5.0"
   },
   "devDependencies": {
     "@tinacms/cli": "^1.5.0",
