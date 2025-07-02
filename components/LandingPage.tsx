@@ -100,7 +100,7 @@ export default function LandingPage({ data }: LandingPageProps) {
               <h1 className="hero-title">{data.hero?.title || 'DOMINATE AI SEARCH RESULTS'}</h1>
               <p className="hero-subtitle">{data.hero?.subtitle || 'Future-proof your business with expert GEO services.'}</p>
               <div className="hero-stats">
-                {data.hero?.stats?.filter(Boolean).map((stat, index) => (
+                {data.hero?.stats?.filter((stat): stat is NonNullable<typeof stat> => stat !== null).map((stat, index) => (
                   <div key={index} className="stat">
                     <div className="stat-number">{stat.number}</div>
                     <div className="stat-label">{stat.label}</div>
@@ -127,7 +127,7 @@ export default function LandingPage({ data }: LandingPageProps) {
             <p>{data.problem?.subtitle || 'Traditional SEO isn\'t enough anymore.'}</p>
           </div>
           <div className="problem-grid">
-            {data.problem?.items?.filter(Boolean).map((item, index) => (
+            {data.problem?.items?.filter((item): item is NonNullable<typeof item> => item !== null).map((item, index) => (
               <div key={index} className="problem-item">
                 <h3>{item.title}</h3>
                 <p>{item.description}</p>
@@ -145,7 +145,7 @@ export default function LandingPage({ data }: LandingPageProps) {
             <p>{data.solution?.subtitle || 'We\'re the specialists in Generative Engine Optimization.'}</p>
           </div>
           <div className="solution-grid">
-            {data.solution?.items?.filter(Boolean).map((item, index) => (
+            {data.solution?.items?.filter((item): item is NonNullable<typeof item> => item !== null).map((item, index) => (
               <div key={index} className="solution-item">
                 <div className="solution-icon">{item.icon}</div>
                 <h3>{item.title}</h3>
@@ -164,7 +164,7 @@ export default function LandingPage({ data }: LandingPageProps) {
             <p>{data.pricing?.subtitle || 'Invest in your AI search future with our proven GEO strategies'}</p>
           </div>
           <div className="pricing-grid">
-            {data.pricing?.plans?.filter(Boolean).map((plan, index) => (
+            {data.pricing?.plans?.filter((plan): plan is NonNullable<typeof plan> => plan !== null).map((plan, index) => (
               <div key={index} className={`pricing-card ${plan.featured ? 'pricing-featured' : ''}`}>
                 {plan.badge && <div className="pricing-badge">{plan.badge}</div>}
                 <div className="pricing-header">
@@ -172,9 +172,9 @@ export default function LandingPage({ data }: LandingPageProps) {
                   <div className="price">{plan.price}<span>{plan.period}</span></div>
                 </div>
                 <div className="pricing-features">
-                  {plan.features.map((feature, featureIndex) => (
+                  {plan.features?.map((feature, featureIndex) => (
                     <div key={featureIndex} className="feature">{feature}</div>
-                  ))}
+                  )) || []}
                 </div>
                 <a 
                   href="https://tenten.co/contact" 
@@ -196,7 +196,7 @@ export default function LandingPage({ data }: LandingPageProps) {
             <p>{data.socialProof?.subtitle || 'Join companies that are already winning in the AI search era'}</p>
           </div>
           <div className="social-proof-stats">
-            {data.socialProof?.stats?.filter(Boolean).map((stat, index) => (
+            {data.socialProof?.stats?.filter((stat): stat is NonNullable<typeof stat> => stat !== null).map((stat, index) => (
               <div key={index} className="social-stat">
                 <div className="social-number">{stat.number}</div>
                 <div className="social-label">{stat.label}</div>
