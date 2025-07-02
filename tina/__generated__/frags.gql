@@ -1,0 +1,74 @@
+fragment PageParts on Page {
+  __typename
+  title
+  description
+  language
+  hero {
+    __typename
+    title
+    subtitle
+    ctaText
+    stats {
+      __typename
+      number
+      label
+    }
+  }
+  problem {
+    __typename
+    title
+    subtitle
+    items {
+      __typename
+      title
+      description
+    }
+  }
+  solution {
+    __typename
+    title
+    subtitle
+    items {
+      __typename
+      icon
+      title
+      description
+    }
+  }
+  pricing {
+    __typename
+    title
+    subtitle
+    plans {
+      __typename
+      name
+      price
+      period
+      featured
+      badge
+      features
+      ctaText
+    }
+  }
+  socialProof {
+    __typename
+    title
+    subtitle
+    stats {
+      __typename
+      number
+      label
+    }
+  }
+  finalCta {
+    __typename
+    title
+    subtitle
+    ctaText
+  }
+  footer {
+    __typename
+    tagline
+    contactText
+  }
+}

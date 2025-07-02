@@ -1,21 +1,19 @@
+// tina/config.ts
 import { defineConfig } from "tinacms";
-
-// Your hosting provider likely exposes this as an environment variable
-const branch = process.env.NEXT_PUBLIC_TINA_BRANCH || process.env.HEAD || process.env.VERCEL_GIT_COMMIT_REF || "main";
-
-export default defineConfig({
+var branch = process.env.HEAD || process.env.VERCEL_GIT_COMMIT_REF || "main";
+var config_default = defineConfig({
   branch,
   clientId: process.env.NEXT_PUBLIC_TINA_CLIENT_ID,
   token: process.env.TINA_TOKEN,
   build: {
     outputFolder: "admin",
-    publicFolder: "public",
+    publicFolder: "public"
   },
   media: {
     tina: {
       mediaRoot: "",
-      publicFolder: "public",
-    },
+      publicFolder: "public"
+    }
   },
   schema: {
     collections: [
@@ -29,20 +27,20 @@ export default defineConfig({
             name: "title",
             label: "Title",
             isTitle: true,
-            required: true,
+            required: true
           },
           {
             type: "string",
             name: "description",
             label: "Meta Description",
-            required: true,
+            required: true
           },
           {
             type: "string",
             name: "language",
             label: "Language",
             options: ["en", "ja", "zh-cn", "zh-tw", "ko", "ar"],
-            required: true,
+            required: true
           },
           {
             type: "object",
@@ -53,22 +51,22 @@ export default defineConfig({
                 type: "string",
                 name: "title",
                 label: "Hero Title",
-                required: true,
+                required: true
               },
               {
                 type: "string",
                 name: "subtitle",
                 label: "Hero Subtitle",
                 ui: {
-                  component: "textarea",
+                  component: "textarea"
                 },
-                required: true,
+                required: true
               },
               {
                 type: "string",
                 name: "ctaText",
                 label: "CTA Button Text",
-                required: true,
+                required: true
               },
               {
                 type: "object",
@@ -80,17 +78,17 @@ export default defineConfig({
                     type: "string",
                     name: "number",
                     label: "Stat Number",
-                    required: true,
+                    required: true
                   },
                   {
                     type: "string",
                     name: "label",
                     label: "Stat Label",
-                    required: true,
-                  },
-                ],
-              },
-            ],
+                    required: true
+                  }
+                ]
+              }
+            ]
           },
           {
             type: "object",
@@ -101,13 +99,13 @@ export default defineConfig({
                 type: "string",
                 name: "title",
                 label: "Section Title",
-                required: true,
+                required: true
               },
               {
                 type: "string",
                 name: "subtitle",
                 label: "Section Subtitle",
-                required: true,
+                required: true
               },
               {
                 type: "object",
@@ -119,20 +117,20 @@ export default defineConfig({
                     type: "string",
                     name: "title",
                     label: "Item Title",
-                    required: true,
+                    required: true
                   },
                   {
                     type: "string",
                     name: "description",
                     label: "Item Description",
                     ui: {
-                      component: "textarea",
+                      component: "textarea"
                     },
-                    required: true,
-                  },
-                ],
-              },
-            ],
+                    required: true
+                  }
+                ]
+              }
+            ]
           },
           {
             type: "object",
@@ -143,13 +141,13 @@ export default defineConfig({
                 type: "string",
                 name: "title",
                 label: "Section Title",
-                required: true,
+                required: true
               },
               {
                 type: "string",
                 name: "subtitle",
                 label: "Section Subtitle",
-                required: true,
+                required: true
               },
               {
                 type: "object",
@@ -161,26 +159,26 @@ export default defineConfig({
                     type: "string",
                     name: "icon",
                     label: "Icon (emoji)",
-                    required: true,
+                    required: true
                   },
                   {
                     type: "string",
                     name: "title",
                     label: "Item Title",
-                    required: true,
+                    required: true
                   },
                   {
                     type: "string",
                     name: "description",
                     label: "Item Description",
                     ui: {
-                      component: "textarea",
+                      component: "textarea"
                     },
-                    required: true,
-                  },
-                ],
-              },
-            ],
+                    required: true
+                  }
+                ]
+              }
+            ]
           },
           {
             type: "object",
@@ -191,13 +189,13 @@ export default defineConfig({
                 type: "string",
                 name: "title",
                 label: "Section Title",
-                required: true,
+                required: true
               },
               {
                 type: "string",
                 name: "subtitle",
                 label: "Section Subtitle",
-                required: true,
+                required: true
               },
               {
                 type: "object",
@@ -209,46 +207,46 @@ export default defineConfig({
                     type: "string",
                     name: "name",
                     label: "Plan Name",
-                    required: true,
+                    required: true
                   },
                   {
                     type: "string",
                     name: "price",
                     label: "Price",
-                    required: true,
+                    required: true
                   },
                   {
                     type: "string",
                     name: "period",
                     label: "Period (e.g., /month)",
-                    required: true,
+                    required: true
                   },
                   {
                     type: "boolean",
                     name: "featured",
-                    label: "Featured Plan",
+                    label: "Featured Plan"
                   },
                   {
                     type: "string",
                     name: "badge",
-                    label: "Badge Text",
+                    label: "Badge Text"
                   },
                   {
                     type: "string",
                     name: "features",
                     label: "Features",
                     list: true,
-                    required: true,
+                    required: true
                   },
                   {
                     type: "string",
                     name: "ctaText",
                     label: "CTA Button Text",
-                    required: true,
-                  },
-                ],
-              },
-            ],
+                    required: true
+                  }
+                ]
+              }
+            ]
           },
           {
             type: "object",
@@ -259,13 +257,13 @@ export default defineConfig({
                 type: "string",
                 name: "title",
                 label: "Section Title",
-                required: true,
+                required: true
               },
               {
                 type: "string",
                 name: "subtitle",
                 label: "Section Subtitle",
-                required: true,
+                required: true
               },
               {
                 type: "object",
@@ -277,17 +275,17 @@ export default defineConfig({
                     type: "string",
                     name: "number",
                     label: "Stat Number",
-                    required: true,
+                    required: true
                   },
                   {
                     type: "string",
                     name: "label",
                     label: "Stat Label",
-                    required: true,
-                  },
-                ],
-              },
-            ],
+                    required: true
+                  }
+                ]
+              }
+            ]
           },
           {
             type: "object",
@@ -298,21 +296,21 @@ export default defineConfig({
                 type: "string",
                 name: "title",
                 label: "Section Title",
-                required: true,
+                required: true
               },
               {
                 type: "string",
                 name: "subtitle",
                 label: "Section Subtitle",
-                required: true,
+                required: true
               },
               {
                 type: "string",
                 name: "ctaText",
                 label: "CTA Button Text",
-                required: true,
-              },
-            ],
+                required: true
+              }
+            ]
           },
           {
             type: "object",
@@ -323,18 +321,21 @@ export default defineConfig({
                 type: "string",
                 name: "tagline",
                 label: "Tagline",
-                required: true,
+                required: true
               },
               {
                 type: "string",
                 name: "contactText",
                 label: "Contact Button Text",
-                required: true,
-              },
-            ],
-          },
-        ],
-      },
-    ],
-  },
+                required: true
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
 });
+export {
+  config_default as default
+};
