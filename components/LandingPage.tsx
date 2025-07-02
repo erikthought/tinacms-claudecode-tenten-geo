@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
+import { tinaField } from 'tinacms/dist/react'
 import type { PageQuery } from '../tina/__generated__/types'
 
 interface LandingPageProps {
@@ -97,8 +98,12 @@ export default function LandingPage({ data }: LandingPageProps) {
         <div className="container">
           <div className="hero-content">
             <div className="hero-text">
-              <h1 className="hero-title">{data.hero?.title || 'DOMINATE AI SEARCH RESULTS'}</h1>
-              <p className="hero-subtitle">{data.hero?.subtitle || 'Future-proof your business with expert GEO services.'}</p>
+              <h1 className="hero-title" data-tina-field={tinaField(data, "hero.title")}>
+                {data.hero?.title || 'DOMINATE AI SEARCH RESULTS'}
+              </h1>
+              <p className="hero-subtitle" data-tina-field={tinaField(data, "hero.subtitle")}>
+                {data.hero?.subtitle || 'Future-proof your business with expert GEO services.'}
+              </p>
               <div className="hero-stats">
                 {data.hero?.stats?.filter((stat): stat is NonNullable<typeof stat> => stat !== null).map((stat, index) => (
                   <div key={index} className="stat">
@@ -111,6 +116,7 @@ export default function LandingPage({ data }: LandingPageProps) {
                 href="#pricing" 
                 className="btn btn-primary btn-large"
                 onClick={(e) => smoothScroll(e, '#pricing')}
+                data-tina-field={tinaField(data, "hero.ctaText")}
               >
                 {data.hero?.ctaText || 'START DOMINATING AI SEARCH'}
               </a>
@@ -123,14 +129,22 @@ export default function LandingPage({ data }: LandingPageProps) {
       <section className="problem">
         <div className="container">
           <div className="section-header">
-            <h2>{data.problem?.title || 'THE AI SEARCH REVOLUTION IS HERE'}</h2>
-            <p>{data.problem?.subtitle || 'Traditional SEO isn\'t enough anymore.'}</p>
+            <h2 data-tina-field={tinaField(data, "problem.title")}>
+              {data.problem?.title || 'THE AI SEARCH REVOLUTION IS HERE'}
+            </h2>
+            <p data-tina-field={tinaField(data, "problem.subtitle")}>
+              {data.problem?.subtitle || 'Traditional SEO isn\'t enough anymore.'}
+            </p>
           </div>
           <div className="problem-grid">
             {data.problem?.items?.filter((item): item is NonNullable<typeof item> => item !== null).map((item, index) => (
               <div key={index} className="problem-item">
-                <h3>{item.title}</h3>
-                <p>{item.description}</p>
+                <h3 data-tina-field={tinaField(data, `problem.items.${index}.title`)}>
+                  {item.title}
+                </h3>
+                <p data-tina-field={tinaField(data, `problem.items.${index}.description`)}>
+                  {item.description}
+                </p>
               </div>
             )) || []}
           </div>
@@ -141,15 +155,25 @@ export default function LandingPage({ data }: LandingPageProps) {
       <section className="solution">
         <div className="container">
           <div className="section-header">
-            <h2>{data.solution?.title || 'TENTEN\'S GEO ADVANTAGE'}</h2>
-            <p>{data.solution?.subtitle || 'We\'re the specialists in Generative Engine Optimization.'}</p>
+            <h2 data-tina-field={tinaField(data, "solution.title")}>
+              {data.solution?.title || 'TENTEN\'S GEO ADVANTAGE'}
+            </h2>
+            <p data-tina-field={tinaField(data, "solution.subtitle")}>
+              {data.solution?.subtitle || 'We\'re the specialists in Generative Engine Optimization.'}
+            </p>
           </div>
           <div className="solution-grid">
             {data.solution?.items?.filter((item): item is NonNullable<typeof item> => item !== null).map((item, index) => (
               <div key={index} className="solution-item">
-                <div className="solution-icon">{item.icon}</div>
-                <h3>{item.title}</h3>
-                <p>{item.description}</p>
+                <div className="solution-icon" data-tina-field={tinaField(data, `solution.items.${index}.icon`)}>
+                  {item.icon}
+                </div>
+                <h3 data-tina-field={tinaField(data, `solution.items.${index}.title`)}>
+                  {item.title}
+                </h3>
+                <p data-tina-field={tinaField(data, `solution.items.${index}.description`)}>
+                  {item.description}
+                </p>
               </div>
             )) || []}
           </div>
@@ -160,25 +184,45 @@ export default function LandingPage({ data }: LandingPageProps) {
       <section className="pricing" id="pricing">
         <div className="container">
           <div className="section-header">
-            <h2>{data.pricing?.title || 'CHOOSE YOUR GEO PACKAGE'}</h2>
-            <p>{data.pricing?.subtitle || 'Invest in your AI search future with our proven GEO strategies'}</p>
+            <h2 data-tina-field={tinaField(data, "pricing.title")}>
+              {data.pricing?.title || 'CHOOSE YOUR GEO PACKAGE'}
+            </h2>
+            <p data-tina-field={tinaField(data, "pricing.subtitle")}>
+              {data.pricing?.subtitle || 'Invest in your AI search future with our proven GEO strategies'}
+            </p>
           </div>
           <div className="pricing-grid">
             {data.pricing?.plans?.filter((plan): plan is NonNullable<typeof plan> => plan !== null).map((plan, index) => (
               <div key={index} className={`pricing-card ${plan.featured ? 'pricing-featured' : ''}`}>
-                {plan.badge && <div className="pricing-badge">{plan.badge}</div>}
+                {plan.badge && (
+                  <div className="pricing-badge" data-tina-field={tinaField(data, `pricing.plans.${index}.badge`)}>
+                    {plan.badge}
+                  </div>
+                )}
                 <div className="pricing-header">
-                  <h3>{plan.name}</h3>
-                  <div className="price">{plan.price}<span>{plan.period}</span></div>
+                  <h3 data-tina-field={tinaField(data, `pricing.plans.${index}.name`)}>
+                    {plan.name}
+                  </h3>
+                  <div className="price">
+                    <span data-tina-field={tinaField(data, `pricing.plans.${index}.price`)}>
+                      {plan.price}
+                    </span>
+                    <span data-tina-field={tinaField(data, `pricing.plans.${index}.period`)}>
+                      {plan.period}
+                    </span>
+                  </div>
                 </div>
                 <div className="pricing-features">
                   {plan.features?.map((feature, featureIndex) => (
-                    <div key={featureIndex} className="feature">{feature}</div>
+                    <div key={featureIndex} className="feature" data-tina-field={tinaField(data, `pricing.plans.${index}.features.${featureIndex}`)}>
+                      {feature}
+                    </div>
                   )) || []}
                 </div>
                 <a 
                   href="https://tenten.co/contact" 
                   className={`btn ${plan.featured ? 'btn-primary' : 'btn-secondary'}`}
+                  data-tina-field={tinaField(data, `pricing.plans.${index}.ctaText`)}
                 >
                   {plan.ctaText}
                 </a>
