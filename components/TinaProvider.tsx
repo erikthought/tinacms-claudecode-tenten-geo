@@ -16,11 +16,19 @@ export default function TinaProvider({ children }: TinaProviderProps) {
   const [isEditMode, setIsEditMode] = useState(false)
 
   useEffect(() => {
-    // Check for edit mode in URL
+    // Check for edit mode in URL with multiple detection methods
     const editParam = router.query.edit === 'true' || 
+                     router.query.edit === true ||
                      (typeof window !== 'undefined' && window.location.search.includes('edit=true'))
+    
+    console.log('Edit mode check:', {
+      routerQuery: router.query.edit,
+      searchParams: typeof window !== 'undefined' ? window.location.search : '',
+      editParam
+    })
+    
     setIsEditMode(editParam)
-  }, [router.query])
+  }, [router.query, router.isReady])
 
   const toggleEditMode = () => {
     const url = new URL(window.location.href)
@@ -178,6 +186,37 @@ export default function TinaProvider({ children }: TinaProviderProps) {
       {children}
       {isEditMode && <EditModeToolbar />}
       {!isEditMode && <EditModeToggle />}
+      {/* Debug indicator */}
+      <div style={{
+        position: 'fixed',
+        bottom: '10px',
+        left: '10px',
+        background: 'rgba(0,0,0,0.8)',
+        color: 'white',
+        padding: '4px 8px',
+        fontSize: '12px',
+        borderRadius: '4px',
+        zIndex: 9999,
+        display: 'flex',
+        gap: '8px',
+        alignItems: 'center'
+      }}>
+        Edit Mode: {isEditMode ? 'ON' : 'OFF'} | Query: {JSON.stringify(router.query.edit)}
+        <button
+          onClick={() => setIsEditMode(!isEditMode)}
+          style={{
+            background: '#2563eb',
+            color: 'white',
+            border: 'none',
+            padding: '2px 6px',
+            borderRadius: '2px',
+            fontSize: '10px',
+            cursor: 'pointer'
+          }}
+        >
+          Force Toggle
+        </button>
+      </div>
     </div>
   )
 }
