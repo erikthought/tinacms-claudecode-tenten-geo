@@ -31,8 +31,8 @@ A multilingual landing page for Tenten's Generative Engine Optimization (GEO) se
 
 1. **Clone the repository**
    ```bash
-   git clone <your-repo-url>
-   cd Tenten-GEO-0701-ClaudeCode
+   git clone https://github.com/erikthought/tinacms-claudecode-tenten-geo.git
+   cd tinacms-claudecode-tenten-geo
    ```
 
 2. **Install dependencies**
