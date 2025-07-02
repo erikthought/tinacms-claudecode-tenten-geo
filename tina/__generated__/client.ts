@@ -1,5 +1,12 @@
 import { createClient } from "tinacms/dist/client";
 import { queries } from "./types";
-export const client = createClient({ url: 'https://content.tinajs.io/1.5/content/13981b1f-e15f-4acb-9a5c-2d66d5ad4e49/github/main', token: '827b43de7471651d7e9ed25e1db496e736624502', queries });
+
+const branch = process.env.NEXT_PUBLIC_TINA_BRANCH || process.env.HEAD || process.env.VERCEL_GIT_COMMIT_REF || "main";
+
+export const client = createClient({ 
+  url: `https://content.tinajs.io/1.5/content/${process.env.NEXT_PUBLIC_TINA_CLIENT_ID}/github/${branch}`, 
+  token: process.env.TINA_TOKEN, 
+  queries 
+});
 export default client;
   
