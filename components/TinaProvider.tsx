@@ -113,7 +113,7 @@ export default function TinaProvider({ children }: TinaProviderProps) {
         zIndex: 10000,
         background: '#2563eb',
         color: 'white',
-        border: 'none',
+        border: '2px solid rgba(255,255,255,0.1)',
         padding: '16px 24px',
         borderRadius: '50px',
         fontSize: '16px',
@@ -124,7 +124,6 @@ export default function TinaProvider({ children }: TinaProviderProps) {
         alignItems: 'center',
         gap: '10px',
         transition: 'all 0.3s ease',
-        border: '2px solid rgba(255,255,255,0.1)',
       }}
       onMouseOver={(e) => {
         e.currentTarget.style.transform = 'scale(1.05)'
