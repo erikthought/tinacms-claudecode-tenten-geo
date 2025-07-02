@@ -8,5 +8,20 @@
       "destination": "/admin/index.html",
       "permanent": false
     }
+  ],
+  "headers": [
+    {
+      "source": "/admin/(.*)",
+      "headers": [
+        {
+          "key": "X-Frame-Options",
+          "value": "SAMEORIGIN"
+        },
+        {
+          "key": "Cross-Origin-Embedder-Policy",
+          "value": "unsafe-none"
+        }
+      ]
+    }
   ]
 }
