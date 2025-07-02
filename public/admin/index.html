@@ -8,242 +8,180 @@
     body {
       margin: 0;
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      background: #f8f9fa;
+      background: #f3f4f6;
     }
     .container {
       display: flex;
       align-items: center;
       justify-content: center;
       min-height: 100vh;
-      padding: 2rem;
+      padding: 1rem;
     }
-    .admin-panel {
+    .admin-card {
       background: white;
       border-radius: 12px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-      padding: 3rem;
-      max-width: 500px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      padding: 2rem;
+      max-width: 600px;
       width: 100%;
       text-align: center;
     }
     .logo {
-      font-size: 2rem;
-      font-weight: bold;
-      color: #2563eb;
+      font-size: 2.5rem;
       margin-bottom: 1rem;
     }
-    .loading {
-      margin: 2rem 0;
+    .title {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: #1f2937;
+      margin-bottom: 0.5rem;
     }
-    .spinner {
-      width: 40px;
-      height: 40px;
-      border: 4px solid #f3f3f3;
-      border-top: 4px solid #2563eb;
-      border-radius: 50%;
-      animation: spin 1s linear infinite;
-      margin: 0 auto 1rem;
-    }
-    @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
-    .status {
+    .subtitle {
       color: #6b7280;
-      margin: 1rem 0;
+      margin-bottom: 2rem;
     }
-    .error {
-      color: #dc2626;
-      background: #fef2f2;
-      border: 1px solid #fecaca;
+    .option-card {
+      border: 2px solid #e5e7eb;
       border-radius: 8px;
-      padding: 1rem;
+      padding: 1.5rem;
       margin: 1rem 0;
+      transition: all 0.2s;
+      cursor: pointer;
     }
-    .success {
-      color: #059669;
-      background: #f0fdf4;
-      border: 1px solid #bbf7d0;
-      border-radius: 8px;
-      padding: 1rem;
-      margin: 1rem 0;
+    .option-card:hover {
+      border-color: #3b82f6;
+      background: #f8fafc;
+    }
+    .option-title {
+      font-weight: 600;
+      color: #1f2937;
+      margin-bottom: 0.5rem;
+    }
+    .option-description {
+      color: #6b7280;
+      font-size: 0.9rem;
     }
     .btn {
-      background: #2563eb;
+      background: #3b82f6;
       color: white;
       border: none;
       padding: 12px 24px;
       border-radius: 8px;
-      cursor: pointer;
       text-decoration: none;
       display: inline-block;
       margin: 0.5rem;
       transition: background 0.2s;
+      font-weight: 500;
     }
     .btn:hover {
-      background: #1d4ed8;
+      background: #2563eb;
     }
-    .btn-secondary {
-      background: #6b7280;
+    .btn-outline {
+      background: transparent;
+      color: #3b82f6;
+      border: 2px solid #3b82f6;
     }
-    .btn-secondary:hover {
-      background: #4b5563;
+    .btn-outline:hover {
+      background: #3b82f6;
+      color: white;
     }
-    .info-list {
-      text-align: left;
-      background: #f9fafb;
+    .info {
+      background: #eff6ff;
+      border: 1px solid #bfdbfe;
       border-radius: 8px;
       padding: 1rem;
-      margin: 1rem 0;
+      margin: 1.5rem 0;
+      text-align: left;
     }
-    .info-list li {
-      margin: 0.5rem 0;
+    .info-title {
+      font-weight: 600;
+      color: #1e40af;
+      margin-bottom: 0.5rem;
     }
-    #tina-root {
-      display: none;
+    .info ul {
+      margin: 0.5rem 0 0 1rem;
+      color: #1e40af;
     }
-    #tina-root.loaded {
-      display: block;
+    .info li {
+      margin: 0.25rem 0;
+    }
+    code {
+      background: #f3f4f6;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-family: monospace;
     }
   </style>
 </head>
 <body>
-  <div id="loading-container" class="container">
-    <div class="admin-panel">
-      <div class="logo">🦙 TinaCMS</div>
-      <h2>Content Management System</h2>
+  <div class="container">
+    <div class="admin-card">
+      <div class="logo">🦙</div>
+      <h1 class="title">TinaCMS Admin Access</h1>
+      <p class="subtitle">Choose your preferred method to access the content management system</p>
       
-      <div id="loading-status" class="loading">
-        <div class="spinner"></div>
-        <div class="status">Initializing admin interface...</div>
+      <div class="option-card" onclick="openTinaCloud()">
+        <div class="option-title">🌐 TinaCloud Dashboard</div>
+        <div class="option-description">
+          Access your content directly through the TinaCloud web interface
+        </div>
+      </div>
+      
+      <div class="option-card" onclick="openLocalAdmin()">
+        <div class="option-title">🔧 Local Development</div>
+        <div class="option-description">
+          Use local development environment with <code>npm run dev</code>
+        </div>
       </div>
 
-      <div id="error-container" style="display: none;">
-        <div class="error">
-          <strong>Failed to load TinaCMS</strong>
-          <p id="error-message">Unable to connect to TinaCMS admin interface.</p>
-        </div>
-        
-        <div class="info-list">
-          <h4>Troubleshooting steps:</h4>
-          <ul>
-            <li>Verify your TinaCloud project is active at <a href="https://app.tina.io" target="_blank">app.tina.io</a></li>
-            <li>Check that repository <code>tentenco/tinacms-claudecode-tenten-geo</code> is connected</li>
-            <li>Ensure branch <code>main</code> is configured in TinaCloud</li>
-            <li>Verify you have admin permissions for this project</li>
-          </ul>
-        </div>
+      <div class="info">
+        <div class="info-title">📋 Current Configuration:</div>
+        <ul>
+          <li><strong>Client ID:</strong> <code>54a6a4f5-eab4-4738-a2c5-759d6435d889</code></li>
+          <li><strong>Repository:</strong> <code>tentenco/tinacms-claudecode-tenten-geo</code></li>
+          <li><strong>Branch:</strong> <code>main</code></li>
+        </ul>
+      </div>
 
-        <a href="#" onclick="location.reload()" class="btn">Retry</a>
-        <a href="https://app.tina.io" target="_blank" class="btn btn-secondary">Open TinaCloud</a>
+      <div class="info">
+        <div class="info-title">🔍 Troubleshooting:</div>
+        <ul>
+          <li>Ensure your TinaCloud project is properly set up</li>
+          <li>Verify the repository is connected to TinaCloud</li>
+          <li>Check that you have admin permissions</li>
+          <li>Make sure environment variables are set in Vercel</li>
+        </ul>
+      </div>
+
+      <div style="margin-top: 2rem;">
+        <a href="https://app.tina.io" target="_blank" class="btn">Open TinaCloud</a>
+        <a href="https://tina.io/docs" target="_blank" class="btn btn-outline">Documentation</a>
       </div>
     </div>
   </div>
 
-  <div id="tina-root"></div>
-
   <script>
-    const CONFIG = {
-      clientId: '54a6a4f5-eab4-4738-a2c5-759d6435d889',
-      branch: 'main'
-    };
-
-    let statusEl = document.getElementById('loading-status').querySelector('.status');
-    let loadingContainer = document.getElementById('loading-container');
-    let errorContainer = document.getElementById('error-container');
-    let tinaRoot = document.getElementById('tina-root');
-
-    function updateStatus(message) {
-      statusEl.textContent = message;
-      console.log('TinaCMS:', message);
+    function openTinaCloud() {
+      const clientId = '54a6a4f5-eab4-4738-a2c5-759d6435d889';
+      const url = `https://app.tina.io/projects/${clientId}`;
+      window.open(url, '_blank');
     }
 
-    function showError(message) {
-      document.getElementById('error-message').textContent = message;
-      loadingContainer.querySelector('.loading').style.display = 'none';
-      errorContainer.style.display = 'block';
+    function openLocalAdmin() {
+      alert('To use local admin:\n\n1. Clone the repository\n2. Run "npm install"\n3. Run "npm run dev"\n4. Visit http://localhost:3000/admin');
     }
 
-    function showSuccess() {
-      loadingContainer.style.display = 'none';
-      tinaRoot.classList.add('loaded');
-    }
-
-    async function loadTinaCMS() {
-      try {
-        updateStatus('Loading TinaCMS modules...');
-        
-        // Try different CDN sources
-        const sources = [
-          'https://unpkg.com/tinacms@latest/dist/admin/index.js',
-          'https://cdn.jsdelivr.net/npm/tinacms@latest/dist/admin/index.js',
-          'https://unpkg.com/@tinacms/cli@latest/dist/admin/index.js'
-        ];
-
-        let loadError = null;
-        
-        for (const source of sources) {
-          try {
-            updateStatus(`Trying ${source.includes('unpkg') ? 'unpkg' : source.includes('jsdelivr') ? 'jsDelivr' : 'TinaCMS'} CDN...`);
-            
-            const module = await import(source);
-            
-            updateStatus('Initializing TinaCMS admin...');
-            
-            if (module.default) {
-              await module.default({
-                ...CONFIG,
-                apiURL: `https://content.tinajs.io/1.5/content/${CONFIG.clientId}/github/${CONFIG.branch}`
-              });
-              
-              updateStatus('TinaCMS loaded successfully!');
-              showSuccess();
-              return;
-            }
-          } catch (err) {
-            loadError = err;
-            console.warn(`Failed to load from ${source}:`, err);
-            continue;
-          }
-        }
-        
-        throw loadError || new Error('All CDN sources failed');
-        
-      } catch (error) {
-        console.error('TinaCMS loading failed:', error);
-        showError(`Failed to load TinaCMS: ${error.message}`);
-      }
-    }
-
-    // Alternative iframe approach if module loading fails
-    function loadTinaIframe() {
-      updateStatus('Trying iframe approach...');
-      
-      const iframe = document.createElement('iframe');
-      iframe.src = `https://app.tina.io/admin/${CONFIG.clientId}`;
-      iframe.style.cssText = 'width:100%;height:100vh;border:none;';
-      iframe.onload = () => {
-        updateStatus('TinaCMS iframe loaded');
-        showSuccess();
-        tinaRoot.appendChild(iframe);
-      };
-      iframe.onerror = () => {
-        showError('Failed to load TinaCMS iframe. Please check your TinaCloud setup.');
-      };
-    }
-
-    // Start loading
-    loadTinaCMS().catch(() => {
-      // Fallback to iframe approach
-      setTimeout(loadTinaIframe, 2000);
-    });
-
-    // Timeout fallback
-    setTimeout(() => {
-      if (!tinaRoot.classList.contains('loaded')) {
-        showError('Timeout loading TinaCMS. Please check your TinaCloud configuration.');
-      }
-    }, 15000);
+    // Add some helpful console information
+    console.log('TinaCMS Admin Interface');
+    console.log('======================');
+    console.log('Client ID: 54a6a4f5-eab4-4738-a2c5-759d6435d889');
+    console.log('Repository: tentenco/tinacms-claudecode-tenten-geo');
+    console.log('Branch: main');
+    console.log('');
+    console.log('If you\'re having issues:');
+    console.log('1. Check TinaCloud setup at https://app.tina.io');
+    console.log('2. Verify repository connection');
+    console.log('3. Ensure environment variables are set');
   </script>
 </body>
 </html>
