@@ -98,10 +98,10 @@ export default function LandingPage({ data }: LandingPageProps) {
         <div className="container">
           <div className="hero-content">
             <div className="hero-text">
-              <h1 className="hero-title" data-tina-field={tinaField(data.hero, "title")}>
+              <h1 className="hero-title" {...(data.hero && { 'data-tina-field': tinaField(data.hero, "title") })}>
                 {data.hero?.title || 'DOMINATE AI SEARCH RESULTS'}
               </h1>
-              <p className="hero-subtitle" data-tina-field={tinaField(data.hero, "subtitle")}>
+              <p className="hero-subtitle" {...(data.hero && { 'data-tina-field': tinaField(data.hero, "subtitle") })}>
                 {data.hero?.subtitle || 'Future-proof your business with expert GEO services.'}
               </p>
               <div className="hero-stats">
@@ -116,7 +116,7 @@ export default function LandingPage({ data }: LandingPageProps) {
                 href="#pricing" 
                 className="btn btn-primary btn-large"
                 onClick={(e) => smoothScroll(e, '#pricing')}
-                data-tina-field={tinaField(data.hero, "ctaText")}
+{...(data.hero && { 'data-tina-field': tinaField(data.hero, "ctaText") })}
               >
                 {data.hero?.ctaText || 'START DOMINATING AI SEARCH'}
               </a>
@@ -129,20 +129,20 @@ export default function LandingPage({ data }: LandingPageProps) {
       <section className="problem">
         <div className="container">
           <div className="section-header">
-            <h2 data-tina-field={tinaField(data.problem, "title")}>
+            <h2 {...(data.problem && { 'data-tina-field': tinaField(data.problem, "title") })}>
               {data.problem?.title || 'THE AI SEARCH REVOLUTION IS HERE'}
             </h2>
-            <p data-tina-field={tinaField(data.problem, "subtitle")}>
+            <p {...(data.problem && { 'data-tina-field': tinaField(data.problem, "subtitle") })}>
               {data.problem?.subtitle || 'Traditional SEO isn\'t enough anymore.'}
             </p>
           </div>
           <div className="problem-grid">
             {data.problem?.items?.filter((item): item is NonNullable<typeof item> => item !== null).map((item, index) => (
               <div key={index} className="problem-item">
-                <h3 data-tina-field={tinaField(item, "title")}>
+                <h3 {...(item && { 'data-tina-field': tinaField(item, "title") })}>
                   {item.title}
                 </h3>
-                <p data-tina-field={tinaField(item, "description")}>
+                <p {...(item && { 'data-tina-field': tinaField(item, "description") })}>
                   {item.description}
                 </p>
               </div>
@@ -155,23 +155,23 @@ export default function LandingPage({ data }: LandingPageProps) {
       <section className="solution">
         <div className="container">
           <div className="section-header">
-            <h2 data-tina-field={tinaField(data.solution, "title")}>
+            <h2 {...(data.solution && { 'data-tina-field': tinaField(data.solution, "title") })}>
               {data.solution?.title || 'TENTEN\'S GEO ADVANTAGE'}
             </h2>
-            <p data-tina-field={tinaField(data.solution, "subtitle")}>
+            <p {...(data.solution && { 'data-tina-field': tinaField(data.solution, "subtitle") })}>
               {data.solution?.subtitle || 'We\'re the specialists in Generative Engine Optimization.'}
             </p>
           </div>
           <div className="solution-grid">
             {data.solution?.items?.filter((item): item is NonNullable<typeof item> => item !== null).map((item, index) => (
               <div key={index} className="solution-item">
-                <div className="solution-icon" data-tina-field={tinaField(item, "icon")}>
+                <div className="solution-icon" {...(item && { 'data-tina-field': tinaField(item, "icon") })}>
                   {item.icon}
                 </div>
-                <h3 data-tina-field={tinaField(item, "title")}>
+                <h3 {...(item && { 'data-tina-field': tinaField(item, "title") })}>
                   {item.title}
                 </h3>
-                <p data-tina-field={tinaField(item, "description")}>
+                <p {...(item && { 'data-tina-field': tinaField(item, "description") })}>
                   {item.description}
                 </p>
               </div>
@@ -184,10 +184,10 @@ export default function LandingPage({ data }: LandingPageProps) {
       <section className="pricing" id="pricing">
         <div className="container">
           <div className="section-header">
-            <h2 data-tina-field={tinaField(data.pricing, "title")}>
+            <h2 {...(data.pricing && { 'data-tina-field': tinaField(data.pricing, "title") })}>
               {data.pricing?.title || 'CHOOSE YOUR GEO PACKAGE'}
             </h2>
-            <p data-tina-field={tinaField(data.pricing, "subtitle")}>
+            <p {...(data.pricing && { 'data-tina-field': tinaField(data.pricing, "subtitle") })}>
               {data.pricing?.subtitle || 'Invest in your AI search future with our proven GEO strategies'}
             </p>
           </div>
@@ -195,19 +195,19 @@ export default function LandingPage({ data }: LandingPageProps) {
             {data.pricing?.plans?.filter((plan): plan is NonNullable<typeof plan> => plan !== null).map((plan, index) => (
               <div key={index} className={`pricing-card ${plan.featured ? 'pricing-featured' : ''}`}>
                 {plan.badge && (
-                  <div className="pricing-badge" data-tina-field={tinaField(plan, "badge")}>
+                  <div className="pricing-badge" {...(plan && { 'data-tina-field': tinaField(plan, "badge") })}>
                     {plan.badge}
                   </div>
                 )}
                 <div className="pricing-header">
-                  <h3 data-tina-field={tinaField(plan, "name")}>
+                  <h3 {...(plan && { 'data-tina-field': tinaField(plan, "name") })}>
                     {plan.name}
                   </h3>
                   <div className="price">
-                    <span data-tina-field={tinaField(plan, "price")}>
+                    <span {...(plan && { 'data-tina-field': tinaField(plan, "price") })}>
                       {plan.price}
                     </span>
-                    <span data-tina-field={tinaField(plan, "period")}>
+                    <span {...(plan && { 'data-tina-field': tinaField(plan, "period") })}>
                       {plan.period}
                     </span>
                   </div>
@@ -222,7 +222,7 @@ export default function LandingPage({ data }: LandingPageProps) {
                 <a 
                   href="https://tenten.co/contact" 
                   className={`btn ${plan.featured ? 'btn-primary' : 'btn-secondary'}`}
-                  data-tina-field={tinaField(plan, "ctaText")}
+                  {...(plan && { 'data-tina-field': tinaField(plan, "ctaText") })}
                 >
                   {plan.ctaText}
                 </a>
