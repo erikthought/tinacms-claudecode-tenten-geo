@@ -287,6 +287,37 @@ export default function LandingPage({ data }: LandingPageProps) {
             <div className="footer-left">
               <div className="logo">TENTEN</div>
               <p>{data.footer?.tagline || 'Leading the future of AI search optimization'}</p>
+              
+              {/* Social Media Links */}
+              <div className="social-links">
+                <a href="https://tenten.co/" target="_blank" rel="noopener noreferrer" aria-label="Website">
+                  🌐
+                </a>
+                <a href="https://www.instagram.com/tenten.co/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                  📷
+                </a>
+                <a href="https://www.threads.com/@tenten.co" target="_blank" rel="noopener noreferrer" aria-label="Threads">
+                  🧵
+                </a>
+                <a href="https://www.facebook.com/tentencreative" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                  📘
+                </a>
+                <a href="https://www.tiktok.com/@tenten.ai" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+                  🎵
+                </a>
+                <a href="https://www.youtube.com/@tenten_ai" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+                  📺
+                </a>
+                <a href="https://www.linkedin.com/company/tentenco/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                  💼
+                </a>
+                <a href="https://www.xiaohongshu.com/user/profile/606abf99000000000101c0a0?xsec_token=&xsec_source=pc_search" target="_blank" rel="noopener noreferrer" aria-label="Red Note">
+                  📝
+                </a>
+                <a href="https://linktr.ee/tenten.co" target="_blank" rel="noopener noreferrer" aria-label="Linktree">
+                  🌳
+                </a>
+              </div>
             </div>
             <div className="footer-right">
               <a href="https://tenten.co/contact" className="btn btn-secondary">
