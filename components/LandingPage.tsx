@@ -2,6 +2,13 @@ import { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
 import { tinaField } from 'tinacms/dist/react'
 import type { PageQuery } from '../tina/__generated__/types'
+import { 
+  detectBrowserLanguage, 
+  getLanguageConfig, 
+  shouldRedirectToDetectedLanguage,
+  markLanguageAsChosen,
+  supportedLanguages 
+} from '../utils/languageDetection'
 
 interface LandingPageProps {
   data: PageQuery['page']
@@ -10,20 +17,29 @@ interface LandingPageProps {
 export default function LandingPage({ data }: LandingPageProps) {
   const router = useRouter()
   const [currentLanguage, setCurrentLanguage] = useState(data.language)
+  const [isInitialLoad, setIsInitialLoad] = useState(true)
+
+  // Auto-detect and redirect based on browser language
+  useEffect(() => {
+    if (isInitialLoad && typeof window !== 'undefined') {
+      const redirectPath = shouldRedirectToDetectedLanguage(router.asPath, data.language)
+      
+      if (redirectPath && redirectPath !== router.asPath) {
+        console.log(`Auto-redirecting to ${redirectPath} based on browser language`)
+        router.replace(redirectPath)
+        return
+      }
+      
+      setIsInitialLoad(false)
+    }
+  }, [router, data.language, isInitialLoad])
 
   const handleLanguageChange = (language: string) => {
-    const languagePages: { [key: string]: string } = {
-      'en': '/',
-      'ja': '/ja',
-      'zh-cn': '/zh-cn',
-      'zh-tw': '/zh-tw',
-      'ko': '/ko',
-      'ar': '/ar'
-    }
+    // Mark that user has made a language choice
+    markLanguageAsChosen()
     
-    if (languagePages[language]) {
-      router.push(languagePages[language])
-    }
+    const langConfig = getLanguageConfig(language)
+    router.push(langConfig.path)
   }
 
   useEffect(() => {
@@ -50,8 +66,10 @@ export default function LandingPage({ data }: LandingPageProps) {
     }
   }
 
+  const currentLangConfig = getLanguageConfig(data.language)
+
   return (
-    <div dir={data.language === 'ar' ? 'rtl' : 'ltr'}>
+    <div dir={currentLangConfig.direction}>
       {/* Header */}
       <header className="header">
         <div className="container">
@@ -65,12 +83,11 @@ export default function LandingPage({ data }: LandingPageProps) {
                   value={currentLanguage} 
                   onChange={(e) => handleLanguageChange(e.target.value)}
                 >
-                  <option value="en">English</option>
-                  <option value="ja">日本語</option>
-                  <option value="zh-cn">简体中文</option>
-                  <option value="zh-tw">繁體中文</option>
-                  <option value="ko">한국어</option>
-                  <option value="ar">العربية</option>
+                  {supportedLanguages.map((lang) => (
+                    <option key={lang.code} value={lang.code}>
+                      {lang.nativeName}
+                    </option>
+                  ))}
                 </select>
               </div>
               <a href="https://tenten.co/contact" className="btn btn-primary">
