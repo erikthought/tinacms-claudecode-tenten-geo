@@ -183,38 +183,40 @@ export default function TinaProvider({ children }: TinaProviderProps) {
     <div>
       {children}
       {isEditMode && <EditModeToolbar />}
-      {!isEditMode && <EditModeToggle />}
-      {/* Debug indicator */}
-      <div style={{
-        position: 'fixed',
-        bottom: '10px',
-        left: '10px',
-        background: 'rgba(0,0,0,0.8)',
-        color: 'white',
-        padding: '4px 8px',
-        fontSize: '12px',
-        borderRadius: '4px',
-        zIndex: 9999,
-        display: 'flex',
-        gap: '8px',
-        alignItems: 'center'
-      }}>
-        Edit Mode: {isEditMode ? 'ON' : 'OFF'} | Query: {JSON.stringify(router.query.edit)}
-        <button
-          onClick={() => setIsEditMode(!isEditMode)}
-          style={{
-            background: '#2563eb',
-            color: 'white',
-            border: 'none',
-            padding: '2px 6px',
-            borderRadius: '2px',
-            fontSize: '10px',
-            cursor: 'pointer'
-          }}
-        >
-          Force Toggle
-        </button>
-      </div>
+      {/* Only show edit button when in edit mode - users must access via ?edit=true */}
+      {/* Debug indicator - remove this in production */}
+      {process.env.NODE_ENV === 'development' && (
+        <div style={{
+          position: 'fixed',
+          bottom: '10px',
+          left: '10px',
+          background: 'rgba(0,0,0,0.8)',
+          color: 'white',
+          padding: '4px 8px',
+          fontSize: '12px',
+          borderRadius: '4px',
+          zIndex: 9999,
+          display: 'flex',
+          gap: '8px',
+          alignItems: 'center'
+        }}>
+          Edit Mode: {isEditMode ? 'ON' : 'OFF'} | Query: {JSON.stringify(router.query.edit)}
+          <button
+            onClick={() => setIsEditMode(!isEditMode)}
+            style={{
+              background: '#2563eb',
+              color: 'white',
+              border: 'none',
+              padding: '2px 6px',
+              borderRadius: '2px',
+              fontSize: '10px',
+              cursor: 'pointer'
+            }}
+          >
+            Force Toggle
+          </button>
+        </div>
+      )}
     </div>
   )
 }
