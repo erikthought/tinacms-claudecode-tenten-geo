@@ -41,7 +41,7 @@ export default defineConfig({
             type: "string",
             name: "language",
             label: "Language",
-            options: ["en", "ja", "zh-cn", "zh-tw", "ko", "ar"],
+            options: ["en", "ja", "zh-cn", "zh-tw", "ko", "ar", "de", "es", "fr", "pt", "tr", "vi"],
             required: true,
           },
           {

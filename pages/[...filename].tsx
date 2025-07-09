@@ -33,7 +33,13 @@ export const getStaticProps = async ({ params }: any) => {
     'zh-cn': 'zh-cn.md',
     'zh-tw': 'zh-tw.md',
     'ko': 'ko.md',
-    'ar': 'ar.md'
+    'ar': 'ar.md',
+    'de': 'de.md',
+    'es': 'es.md',
+    'fr': 'fr.md',
+    'pt': 'pt.md',
+    'tr': 'tr.md',
+    'vi': 'vi.md'
   }
 
   const contentFile = contentMap[filename] || 'en.md'
@@ -67,6 +73,12 @@ export const getStaticPaths = async () => {
       { params: { filename: ['zh-tw'] } },
       { params: { filename: ['ko'] } },
       { params: { filename: ['ar'] } },
+      { params: { filename: ['de'] } },
+      { params: { filename: ['es'] } },
+      { params: { filename: ['fr'] } },
+      { params: { filename: ['pt'] } },
+      { params: { filename: ['tr'] } },
+      { params: { filename: ['vi'] } },
     ],
     fallback: false,
   }

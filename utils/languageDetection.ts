@@ -48,6 +48,48 @@ export const supportedLanguages: LanguageConfig[] = [
     nativeName: 'العربية',
     direction: 'rtl',
     path: '/ar'
+  },
+  {
+    code: 'de',
+    name: 'German',
+    nativeName: 'Deutsch',
+    direction: 'ltr',
+    path: '/de'
+  },
+  {
+    code: 'es',
+    name: 'Spanish',
+    nativeName: 'Español',
+    direction: 'ltr',
+    path: '/es'
+  },
+  {
+    code: 'fr',
+    name: 'French',
+    nativeName: 'Français',
+    direction: 'ltr',
+    path: '/fr'
+  },
+  {
+    code: 'pt',
+    name: 'Portuguese',
+    nativeName: 'Português',
+    direction: 'ltr',
+    path: '/pt'
+  },
+  {
+    code: 'tr',
+    name: 'Turkish',
+    nativeName: 'Türkçe',
+    direction: 'ltr',
+    path: '/tr'
+  },
+  {
+    code: 'vi',
+    name: 'Vietnamese',
+    nativeName: 'Tiếng Việt',
+    direction: 'ltr',
+    path: '/vi'
   }
 ]
 
@@ -72,7 +114,28 @@ export function detectBrowserLanguage(): string {
     'ar': 'ar',
     'ar-SA': 'ar',
     'ar-EG': 'ar',
-    'ar-AE': 'ar'
+    'ar-AE': 'ar',
+    'de': 'de',
+    'de-DE': 'de',
+    'de-AT': 'de',
+    'de-CH': 'de',
+    'es': 'es',
+    'es-ES': 'es',
+    'es-MX': 'es',
+    'es-AR': 'es',
+    'es-CO': 'es',
+    'fr': 'fr',
+    'fr-FR': 'fr',
+    'fr-CA': 'fr',
+    'fr-BE': 'fr',
+    'fr-CH': 'fr',
+    'pt': 'pt',
+    'pt-PT': 'pt',
+    'pt-BR': 'pt',
+    'tr': 'tr',
+    'tr-TR': 'tr',
+    'vi': 'vi',
+    'vi-VN': 'vi'
   }
   
   // Try exact match first
