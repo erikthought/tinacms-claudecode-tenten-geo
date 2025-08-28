@@ -48,7 +48,7 @@ pricing:
   subtitle: "透過我們經過驗證的GEO策略投資您的AI搜尋未來"
   plans:
     - name: "標準GEO"
-      price: "$2,390"
+      price: "NT$74,090"
       period: "/月"
       featured: false
       features:
@@ -60,7 +60,7 @@ pricing:
         - "✓ 月度報告"
       ctaText: "開始使用"
     - name: "高級GEO"
-      price: "$5,290"
+      price: "NT$163,990"
       period: "/月"
       featured: true
       badge: "最受歡迎"

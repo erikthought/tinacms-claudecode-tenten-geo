@@ -48,7 +48,7 @@ pricing:
   subtitle: "Đầu tư vào tương lai tìm kiếm AI của bạn với các chiến lược GEO đã được chứng minh"
   plans:
     - name: "GEO TIÊU CHUẨN"
-      price: "$2,390"
+      price: "57,360,000₫"
       period: "/tháng"
       featured: false
       features:
@@ -60,7 +60,7 @@ pricing:
         - "✓ Báo cáo Hàng tháng"
       ctaText: "BẮT ĐẦU"
     - name: "GEO CAO CẤP"
-      price: "$5,290"
+      price: "126,960,000₫"
       period: "/tháng"
       featured: true
       badge: "PHỔ BIẾN NHẤT"

@@ -48,7 +48,7 @@ pricing:
   subtitle: "검증된 GEO 전략으로 AI 검색의 미래에 투자하세요"
   plans:
     - name: "표준 GEO"
-      price: "$2,390"
+      price: "₩3,107,000"
       period: "/월"
       featured: false
       features:
@@ -60,7 +60,7 @@ pricing:
         - "✓ 월간 리포트"
       ctaText: "시작하기"
     - name: "프리미엄 GEO"
-      price: "$5,290"
+      price: "₩6,877,000"
       period: "/월"
       featured: true
       badge: "가장 인기"

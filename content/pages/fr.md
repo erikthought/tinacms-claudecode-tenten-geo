@@ -48,7 +48,7 @@ pricing:
   subtitle: "Investissez dans votre avenir de recherche IA avec nos stratégies GEO éprouvées"
   plans:
     - name: "GEO STANDARD"
-      price: "$2,390"
+      price: "2.190€"
       period: "/mois"
       featured: false
       features:
@@ -60,7 +60,7 @@ pricing:
         - "✓ Rapports Mensuels"
       ctaText: "COMMENCER"
     - name: "GEO PREMIUM"
-      price: "$5,290"
+      price: "4.850€"
       period: "/mois"
       featured: true
       badge: "LE PLUS POPULAIRE"

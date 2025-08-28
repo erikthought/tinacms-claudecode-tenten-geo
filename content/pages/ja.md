@@ -48,7 +48,7 @@ pricing:
   subtitle: "実証済みのGEO戦略でAI検索の未来に投資しましょう"
   plans:
     - name: "スタンダードGEO"
-      price: "$2,390"
+      price: "¥358,500"
       period: "/月"
       featured: false
       features:
@@ -60,7 +60,7 @@ pricing:
         - "✓ 月次レポート"
       ctaText: "開始する"
     - name: "プレミアムGEO"
-      price: "$5,290"
+      price: "¥793,500"
       period: "/月"
       featured: true
       badge: "最も人気"

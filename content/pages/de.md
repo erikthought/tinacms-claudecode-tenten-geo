@@ -48,7 +48,7 @@ pricing:
   subtitle: "Investieren Sie in Ihre KI-Suchzukunft mit unseren bewährten GEO-Strategien"
   plans:
     - name: "STANDARD GEO"
-      price: "$2,390"
+      price: "2.190€"
       period: "/Monat"
       featured: false
       features:
@@ -60,7 +60,7 @@ pricing:
         - "✓ Monatliche Berichte"
       ctaText: "JETZT STARTEN"
     - name: "PREMIUM GEO"
-      price: "$5,290"
+      price: "4.850€"
       period: "/Monat"
       featured: true
       badge: "BELIEBTESTE WAHL"

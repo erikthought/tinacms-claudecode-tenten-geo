@@ -48,7 +48,7 @@ pricing:
   subtitle: "Kanıtlanmış GEO stratejilerimizle AI arama geleceğinize yatırım yapın"
   plans:
     - name: "STANDART GEO"
-      price: "$2,390"
+      price: "₺77,670"
       period: "/ay"
       featured: false
       features:
@@ -60,7 +60,7 @@ pricing:
         - "✓ Aylık Raporlar"
       ctaText: "BAŞLAYIN"
     - name: "PREMIUM GEO"
-      price: "$5,290"
+      price: "₺171,925"
       period: "/ay"
       featured: true
       badge: "EN POPÜLER"

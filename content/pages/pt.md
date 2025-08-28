@@ -48,7 +48,7 @@ pricing:
   subtitle: "Invista em seu futuro de busca IA com nossas estratégias GEO comprovadas"
   plans:
     - name: "GEO PADRÃO"
-      price: "$2,390"
+      price: "R$ 11.950"
       period: "/mês"
       featured: false
       features:
@@ -60,7 +60,7 @@ pricing:
         - "✓ Relatórios Mensais"
       ctaText: "COMEÇAR"
     - name: "GEO PREMIUM"
-      price: "$5,290"
+      price: "R$ 26.450"
       period: "/mês"
       featured: true
       badge: "MAIS POPULAR"

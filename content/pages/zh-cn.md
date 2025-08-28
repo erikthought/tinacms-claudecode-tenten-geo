@@ -48,7 +48,7 @@ pricing:
   subtitle: "通过我们经过验证的GEO策略投资您的AI搜索未来"
   plans:
     - name: "标准GEO"
-      price: "$2,390"
+      price: "¥16,730"
       period: "/月"
       featured: false
       features:
@@ -60,7 +60,7 @@ pricing:
         - "✓ 月度报告"
       ctaText: "开始使用"
     - name: "高级GEO"
-      price: "$5,290"
+      price: "¥37,030"
       period: "/月"
       featured: true
       badge: "最受欢迎"

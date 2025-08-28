@@ -48,7 +48,7 @@ pricing:
   subtitle: "استثمر في مستقبل البحث بالذكاء الاصطناعي مع استراتيجيات GEO المثبتة"
   plans:
     - name: "GEO القياسي"
-      price: "$2,390"
+      price: "8,963 ر.س"
       period: "/شهر"
       featured: false
       features:
@@ -60,7 +60,7 @@ pricing:
         - "✓ تقارير شهرية"
       ctaText: "ابدأ"
     - name: "GEO المتميز"
-      price: "$5,290"
+      price: "19,838 ر.س"
       period: "/شهر"
       featured: true
       badge: "الأكثر شعبية"
